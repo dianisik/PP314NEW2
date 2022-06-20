@@ -1,4 +1,4 @@
-package ru.kata.spring.boot_security.demo.controller;
+/*package ru.kata.spring.boot_security.demo.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class MyRestController {
 
     private final MyUserDetailsService userService;
 
-    BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+   private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
     @GetMapping("/rest/principal")
@@ -73,4 +73,4 @@ public class MyRestController {
     public void deleteUser(@PathVariable long id) {
         userService.deleteById(id);
     }
-}
+}*/
