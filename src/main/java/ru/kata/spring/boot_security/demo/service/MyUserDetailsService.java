@@ -21,7 +21,6 @@ import ru.kata.spring.boot_security.demo.repository.UserRepository;
 import java.util.*;
 
 @Service("userDetailsService")
-@Transactional
 public class MyUserDetailsService implements UserDetailsService, UserService {
 
     private final UserRepository userRepository;
@@ -36,19 +35,12 @@ public class MyUserDetailsService implements UserDetailsService, UserService {
     public User findByUserName(String userName){
         return userRepository.findByName(userName);    }
 
-    @Transactional
     @Override
-
     public UserDetails loadUserByUsername(String name)
             throws UsernameNotFoundException {
         return userRepository.findByName(name);
 
     }
-    public Set<Role> getRoles (ArrayList<Long> roles) {
-
-        return roleRepository.findByIdIn(roles);
-    }
-
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
@@ -78,17 +70,14 @@ public class MyUserDetailsService implements UserDetailsService, UserService {
     public User findUserByEmail(String name) {
         return null;
     }
-
-    @Override
+   @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
-
     @Override
     public void saveOrUpdate(User user) {
 
     }
-
     @Override
     public void delete(Long id) {
 
