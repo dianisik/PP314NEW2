@@ -10,7 +10,6 @@ import ru.kata.spring.boot_security.demo.service.UpdateUserService;
 @RequiredArgsConstructor
 public class UpdateUserServiceImpl implements UpdateUserService {
     private final MyUserDetailsService userService;
-
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override

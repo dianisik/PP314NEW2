@@ -13,16 +13,16 @@ const userFetchService = {
         'Content-Type': 'application/json',
         'Referer': null
     },
-    findAllUsers: async () => await fetch('rest'),
-    addNewUser: async (user) => await fetch('rest', {method: 'POST', headers: userFetchService.head, body: JSON.stringify(user)}),
-    findOneUser: async (id) => await fetch(`rest/${id}`),
-    getPrincipalInfo: async () => await fetch(`rest/principal`),
-    updateUser: async (user, id) => await fetch(`rest/${id}`, {
+    findAllUsers: async () => await fetch('api'),
+    addNewUser: async (user) => await fetch('api', {method: 'POST', headers: userFetchService.head, body: JSON.stringify(user)}),
+    findOneUser: async (id) => await fetch(`api/${id}`),
+    getPrincipalInfo: async () => await fetch(`api/principal`),
+    updateUser: async (user, id) => await fetch(`api/${id}`, {
         method: 'PUT',
         headers: userFetchService.head,
         body: JSON.stringify(user)
     }),
-    deleteUser: async (id) => await fetch(`rest/${id}`, {method: 'DELETE', headers: userFetchService.head})
+    deleteUser: async (id) => await fetch(`api/${id}`, {method: 'DELETE', headers: userFetchService.head})
 
 }
 
@@ -121,8 +121,8 @@ async function editUser(modal, id) {
                         size="3"
                         multiple name="roles"
                         id="roles" required>
-                <option value="ROLE_ADMIN">ADMIN</option>
-                <option selected value="ROLE_USER">USER</option>
+                <option value="1">ADMIN</option>
+                <option selected value="2">USER</option>
                 </select>
                 </div>
             </form>

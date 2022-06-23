@@ -52,15 +52,12 @@ public class User implements UserDetails {
     public void setAge(int age) {
         this.age = age;
     }
-
-
     public String getRolesView() {
         StringBuilder sb = new StringBuilder();
         for (Role role : roles) { sb.append(role.getName().substring(5));
             sb.append(" ");}
         return sb.toString();
     }
-
     public Long getId() {
         return id;
     }
@@ -87,7 +84,6 @@ public class User implements UserDetails {
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
         return roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(Collectors.toList());
     }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return mapRolesToAuthorities(roles);
@@ -106,7 +102,6 @@ public class User implements UserDetails {
     public boolean isAccountNonExpired() {
         return true;
     }
-
     @Override
     public boolean isAccountNonLocked() {
         return true;
@@ -116,7 +111,6 @@ public class User implements UserDetails {
     public boolean isCredentialsNonExpired() {
         return true;
     }
-
     @Override
     public boolean isEnabled() {
         return true;
@@ -126,7 +120,6 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-
     public Set<Role> getRoles() {
         return roles;
     }
@@ -135,7 +128,7 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-       public String getName() {
+    public String getName() {
         return name;
     }
 

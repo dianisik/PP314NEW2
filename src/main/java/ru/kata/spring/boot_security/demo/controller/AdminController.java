@@ -17,14 +17,7 @@ public class AdminController {
 
     private final MyUserDetailsService myUserDetailsService;
 
-//TODO Удалить
-   /* @Autowired
-    public AdminController(MyUserDetailsService myUserDetailsService) {
-        this.myUserDetailsService = myUserDetailsService;
-
-    }*/
-
-    @GetMapping("/admin/info")
+    @GetMapping("/info")
     public String goHome(Principal principal, Model model){
         User user = myUserDetailsService.findByUserName(principal.getName());
         model.addAttribute("activeUser", user);

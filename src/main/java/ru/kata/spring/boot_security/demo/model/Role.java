@@ -15,7 +15,6 @@ import java.util.Collection;
 public class Role implements GrantedAuthority  {
 
     public Role(){
-
     }
     public Role(String name){
         this.name = name;
@@ -23,15 +22,12 @@ public class Role implements GrantedAuthority  {
     public Role(Long id, String name){
         this.id = id; this.name = name;
     }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column (name = "name")
     private String name;
-
-
     @Override
     public String getAuthority() {
         return name;

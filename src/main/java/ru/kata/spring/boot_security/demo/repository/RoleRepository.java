@@ -14,4 +14,6 @@ public interface RoleRepository extends JpaRepository<Role, Long> {
 
     //
     Set<Role> findByIdIn(List<Long> ids);
+
+
 }

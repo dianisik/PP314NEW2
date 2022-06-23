@@ -32,6 +32,9 @@ public class MyUserDetailsService implements UserDetailsService, UserService {
         this.roleRepository = roleRepository;
     }
 
+    public Set<Role> getRoles (ArrayList<Long> roles){
+        return roleRepository.findByIdIn(roles);
+    }
     public User findByUserName(String userName){
         return userRepository.findByName(userName);    }
 
@@ -81,5 +84,12 @@ public class MyUserDetailsService implements UserDetailsService, UserService {
     @Override
     public void delete(Long id) {
 
+    }
+    public ArrayList <Long> rolesToId (Set<Role> roles){
+        ArrayList<Long> rolesId = new ArrayList<>();
+        for (Role role:roles){
+            rolesId.add(Long.valueOf(role.getName()));
+        }
+        return rolesId;
     }
 }

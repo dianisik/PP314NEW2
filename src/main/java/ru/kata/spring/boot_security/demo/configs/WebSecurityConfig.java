@@ -18,13 +18,11 @@ import ru.kata.spring.boot_security.demo.service.MyUserDetailsService;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final SuccessUserHandler successUserHandler;
-    private final MyUserDetailsService myUserDetailsService;
 
     @Autowired
 
     public WebSecurityConfig(SuccessUserHandler successUserHandler, MyUserDetailsService myUserDetailsService) {
         this.successUserHandler = successUserHandler;
-        this.myUserDetailsService = myUserDetailsService;
     }
 
     @Override
@@ -33,16 +31,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().disable()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/index").permitAll()
+                //.antMatchers("/", "/index").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/**").hasAnyRole("ADMIN","USER")
+                .antMatchers("/info/**").hasAnyRole("ADMIN","USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().successHandler(successUserHandler)
                 .permitAll()
                 .and()
                 .logout()
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/login")
                 .permitAll();
     }
 
